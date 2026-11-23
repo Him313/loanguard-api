@@ -1,18 +1,12 @@
-"""Loan Application Pydantic Schemas.
-
-Responsibilities:
-- Define request and response data models for loan applications.
-- Handle payload validation, data serialization, and type casting.
-- Specify input schemas for application submissions (e.g., applicant income, requested amount, credit history).
-- Specify output schemas for application statuses, fraud risk scores, and decision details.
-"""
-
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 # TODO: Define application schemas (e.g., ApplicationCreate, ApplicationResponse, ApplicationUpdate)
 # Example placeholder:
-# class ApplicationBase(BaseModel):
-#     applicant_name: str
-#     loan_amount: float
-#     annual_income: float
+class ApplicationBase(BaseModel):
+    applicant_name: str
+    age: int = Field(gt=0, le=120)
+    annual_income: float = Field(ge=0)
+    loan_amount: float = Field(ge=0)
+    credit_score: int = Field(ge=300, le=850)
+    loan_term_months: int = Field(ge=6, le=60)
 

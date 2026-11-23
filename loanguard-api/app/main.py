@@ -1,7 +1,6 @@
 """FastAPI application entry point for LoanGuard API."""
 
 from fastapi import FastAPI
-
 from app.api.routes.applications import router as applications_router
 from app.core.config import settings
 
@@ -22,4 +21,3 @@ def health_check():
         "status": "healthy",
         "environment": settings.ENVIRONMENT,
     }
-
